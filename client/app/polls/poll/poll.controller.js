@@ -3,9 +3,10 @@
 (function() {
   class PollCtrl {
 
-    constructor(pollService, $state, answerService) {
+    constructor(pollService, $state, answerService, Auth) {
       this.pollService = pollService;
       this.answerService = answerService;
+      this.isLoggedIn = Auth.isLoggedIn;
 
       this.pollService.get($state.params.id)
         .then(data => {
@@ -25,10 +26,18 @@
 
       })
     }
+
+    addOtherOption(option) {
+      this.poll.options.push(option);
+      this.submitAnswer(option);
+
+      //make update poll request...
+
+    }
   }
 
   angular.module('appVotingApp')
     .controller('PollCtrl', PollCtrl);
 
-  PollCtrl.$inject = ['pollService', '$state', 'answerService'];
+  PollCtrl.$inject = ['pollService', '$state', 'answerService', 'Auth'];
 }());

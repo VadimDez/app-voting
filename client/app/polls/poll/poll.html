@@ -14,5 +14,11 @@
         <button class="btn btn-default btn-block" ng-repeat="option in pollCtrl.poll.options track by $index" ng-click="pollCtrl.submitAnswer(option)">{{ option }}</button>
       </div>
     </div>
+
+    <div ng-show="pollCtrl.isLoggedIn()">
+      <label for="other">If you don't like options add new one</label>
+      <input type="text" name="other" class="form-control" ng-model="otherOption">
+      <button class="btn pull-right" ng-click="pollCtrl.addOtherOption(otherOption)">Add and vote</button>
+    </div>
   </div>
 <footer></footer>

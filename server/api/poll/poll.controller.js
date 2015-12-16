@@ -59,13 +59,19 @@ function saveUpdates(updates) {
   };
 }
 
-function removeEntity(res) {
+function removeEntity(res, user) {
   return function(entity) {
     if (entity) {
-      return entity.removeAsync()
-        .then(() => {
-          res.status(204).end();
-        });
+
+      if (user.role !== 'admin' && entity.user !== user._id) {
+        res.status(403).end();
+      } else {
+
+        return entity.removeAsync()
+          .then(() => {
+            res.status(204).end();
+          });
+      }
     }
   };
 }
@@ -130,6 +136,6 @@ export function update(req, res) {
 export function destroy(req, res) {
   Poll.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
-    .then(removeEntity(res))
+    .then(removeEntity(res, req.user))
     .catch(handleError(res));
 }
