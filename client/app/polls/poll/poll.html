@@ -1,0 +1,18 @@
+<navbar></navbar>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        Share: <a href="#" socialshare socialshare-provider="facebook" socialshare-text="Take part" socialshare-type="String('feed')" socialshare-caption="test">Facebook</a>
+        <a href="#" socialshare socialshare-provider="twitter" socialshare-text="Take part" socialshare-hashtags="poll">Twitter</a>
+        <a href="#" socialshare socialshare-provider="vk" socialshare-text="Take part">VK</a>
+      </div>
+    </div>
+
+    <h2>{{ pollCtrl.poll.question }}</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-default btn-block" ng-repeat="option in pollCtrl.poll.options track by $index" ng-click="pollCtrl.submitAnswer(option)">{{ option }}</button>
+      </div>
+    </div>
+  </div>
+<footer></footer>

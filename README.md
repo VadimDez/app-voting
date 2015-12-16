@@ -1,39 +1,32 @@
-# node-js-getting-started
+# app-voting
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.1.0.
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+## Getting Started
 
-## Running Locally
+### Prerequisites
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+- [Git](https://git-scm.com/)
+- [Node.js and npm](nodejs.org) Node ^4.2.3, npm ^2.14.7
+- [Bower](bower.io) (`npm install --global bower`)
+- [Ruby](https://www.ruby-lang.org) and then `gem install sass`
+- [Grunt](http://gruntjs.com/) (`npm install --global grunt-cli`)
+- [MongoDB](https://www.mongodb.org/) - Keep a running daemon with `mongod`
 
-```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
-$ npm install
-$ npm start
-```
+### Developing
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+1. Run `npm install` to install server dependencies.
 
-## Deploying to Heroku
+2. Run `bower install` to install front-end dependencies.
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-or
+3. Run `mongod` in a separate shell to keep an instance of the MongoDB Daemon running
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+4. Run `grunt serve` to start the development server. It should automatically open the client in your browser when ready.
 
-## Documentation
+## Build & development
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
+Run `grunt build` for building and `grunt serve` for preview.
 
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
-- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
+## Testing
+
+Running `npm test` will run the unit tests with karma.

@@ -1,0 +1,24 @@
+<navbar></navbar>
+  <div class="container">
+    <h2>New poll</h2>
+    <form name="pollForm" novalidate ng-submit="pollForm.$valid && pollCreateCtrl.create()">
+      <div>
+        <label for="question">Question</label>
+        <input type="text" name="question" class="form-control" placeholder="Question" ng-model="pollCreateCtrl.poll.question" required>
+      </div>
+
+      <p>Options</p>
+
+      <div ng-repeat="(key, value) in pollCreateCtrl.optionCount track by $index">
+        <label for=""></label>
+        <input type="text" name="option" class="form-control" placeholder="Option" ng-model="pollCreateCtrl.poll.options[key]" required>
+      </div>
+
+      <div class="text-right">
+        <button class="btn btn-info" ng-click="pollCreateCtrl.addOption()" type="button"><i class="glyphicon glyphicon-plus"></i> Add one more option</button>
+        <button class="btn btn-primary" type="submit" ng-disabled="!pollForm.$valid"><i class="glyphicon glyphicon-check"></i> Create</button>
+      </div>
+
+    </form>
+  </div>
+<footer></footer>

@@ -1,0 +1,21 @@
+<navbar></navbar>
+<div class="container">
+  <div>
+    <a ui-sref="polls/create" class="btn btn-primary">Create new</a>
+  </div>
+
+  <div>
+    <table class="table">
+      <tbody>
+        <tr ng-repeat="poll in pollsCtrl.polls">
+          <td>
+            <a ui-sref="polls/poll({id: poll._id})">{{ poll.question }}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer></footer>
