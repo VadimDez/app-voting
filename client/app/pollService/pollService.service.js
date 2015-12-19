@@ -25,6 +25,11 @@ class PollService {
   remove(id) {
     return this.$http.delete('/api/polls/' + id);
   }
+
+  update(poll) {
+    delete poll.user;
+    return this.$http.put('/api/polls/' + poll._id, poll);
+  }
 }
 
 angular.module('appVotingApp')

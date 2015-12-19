@@ -29,10 +29,12 @@
 
     addOtherOption(option) {
       this.poll.options.push(option);
-      this.submitAnswer(option);
 
       //make update poll request...
-
+      this.pollService.update(this.poll)
+        .then(() => {
+          this.submitAnswer(option);
+        });
     }
   }
 

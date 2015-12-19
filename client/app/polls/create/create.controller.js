@@ -3,9 +3,9 @@
 angular.module('appVotingApp')
   .controller('PollCreateCtrl', PollCreateCtrl);
 
-PollCreateCtrl.$inject = ['$scope', 'pollService'];
+PollCreateCtrl.$inject = ['pollService', '$state'];
 
-function PollCreateCtrl($scope, pollService) {
+function PollCreateCtrl(pollService, $state) {
   var vm = this;
   this.addOption = addOption;
   this.create = create;
@@ -21,6 +21,8 @@ function PollCreateCtrl($scope, pollService) {
   }
 
   function create() {
-    pollService.create(vm.poll);
+    pollService.create(vm.poll).then((data) => {
+      $state.go('polls/poll', {id: data.data[0]._id});
+    });
   }
 }
