@@ -7,8 +7,8 @@
         <td>
           <a ui-sref="polls/poll({id: poll._id})">{{ poll.question }}</a>
         </td>
-        <td>
-          <button ng-click="profileCtrl.deletePoll(poll)">Delete</button>
+        <td class="text-right">
+          <button class="btn btn-danger" ng-click="profileCtrl.deletePoll(poll)">Delete</button>
         </td>
       </tr>
       </tbody>
