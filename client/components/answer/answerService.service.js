@@ -18,7 +18,7 @@ class answerService {
 
     return this.$http({
       url: url,
-      method: "GET",
+      method: 'GET',
       params: {filter: filter},
       paramSerializer: '$httpParamSerializerJQLike'
     });

@@ -17,5 +17,5 @@ class MainController {
   angular.module('appVotingApp')
     .controller('MainController', MainController);
 
-  MainController.$inject = ['$http', 'pollService']
+  MainController.$inject = ['$http', 'pollService'];
 })();

@@ -8,7 +8,7 @@
       this.pollService.getMine()
         .then(data => {
           this.polls = data.data;
-        })
+        });
     }
 
     deletePoll(poll) {

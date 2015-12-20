@@ -10,7 +10,7 @@ class PollsCtrl {
       console.log(polls.data);
 
       this.polls = polls.data;
-    })
+    });
   }
 }
 

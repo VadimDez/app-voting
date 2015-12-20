@@ -35,7 +35,7 @@
       }).then(() => {
         this.hasAnswered = true;
         this.getAggregations(this.poll._id);
-      })
+      });
     }
 
     addOtherOption(option) {
@@ -52,7 +52,7 @@
       this.answerService.getAggregations(pollId)
         .then(data => {
           this.setUpAggregationChart(data.data);
-        })
+        });
     }
 
     setUpAggregationChart(data) {
