@@ -1,1 +1,1 @@
-web: grunt serve:dist
+web: npm install && grunt serve:dist
