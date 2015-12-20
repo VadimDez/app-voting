@@ -4,28 +4,18 @@
 
 class MainController {
 
-  constructor($http) {
+  constructor($http, pollService) {
     this.$http = $http;
-    this.awesomeThings = [];
 
-    $http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-    });
-  }
-
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
-    }
-  }
-
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
+    pollService.last(10)
+      .then(data => {
+        this.polls = data.data;
+      });
   }
 }
 
-angular.module('appVotingApp')
-  .controller('MainController', MainController);
+  angular.module('appVotingApp')
+    .controller('MainController', MainController);
 
+  MainController.$inject = ['$http', 'pollService']
 })();

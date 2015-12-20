@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 var Answer = require('./answer.model');
+import mongoose from 'mongoose';
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
@@ -61,7 +62,20 @@ function removeEntity(res) {
 
 // Gets a list of Answers
 export function index(req, res) {
-  Answer.findAsync()
+  var filter = {};
+
+  if (req.query.filter && req.query.filter.poll) {
+    filter.poll = req.query.filter.poll;
+  }
+
+  if (req.user) {
+    filter.user = req.user._id;
+  } else {
+    filter.session = req.session.id;
+  }
+
+
+  Answer.findAsync(filter)
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
@@ -78,9 +92,14 @@ export function show(req, res) {
 export function create(req, res) {
   var answer = new Answer({
     name: req.body.name,
-    user: req.user._id,
     poll: req.body.poll
   });
+
+  if (req.user) {
+    answer.user = req.user._id;
+  } else {
+    answer.session = req.session.id;
+  }
 
   answer.saveAsync()
     .then(responseWithResult(res, 201))
@@ -104,5 +123,29 @@ export function destroy(req, res) {
   Answer.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
+    .catch(handleError(res));
+}
+
+export function aggregate(req, res) {
+
+  Answer.aggregateAsync([
+      {
+        $match: {
+          poll: mongoose.Types.ObjectId(req.params.poll)
+        }
+      },
+      {
+        $group: {
+          _id: '$name',
+          total: {$sum: 1}
+        }
+      }
+    ]).then(result => {
+    //res.send(mongoose.Schema.Types.ObjectId(req.params.poll));
+    res.send(result);
+    res.end();
+  })
+    //.then(handleEntityNotFound(res))
+    //.then(responseWithResult(res))
     .catch(handleError(res));
 }

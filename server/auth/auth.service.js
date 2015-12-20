@@ -8,8 +8,16 @@ import compose from 'composable-middleware';
 import User from '../api/user/user.model';
 
 var validateJwt = expressJwt({
-  secret: config.secrets.session
+  secret: config.secrets.session,
+  credentialsRequired: false
 });
+
+export function attachUserIfHasToken() {
+  return compose()
+    .use(function (req, res, next) {
+      validateJwt(req, res, next);
+    });
+}
 
 /**
  * Attaches the user object to the request if authenticated

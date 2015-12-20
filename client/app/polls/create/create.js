@@ -7,6 +7,7 @@ angular.module('appVotingApp')
         url: '/polls/create',
         templateUrl: 'app/polls/create/create.html',
         controller: 'PollCreateCtrl',
-        controllerAs: 'pollCreateCtrl'
+        controllerAs: 'pollCreateCtrl',
+        authenticate: true
       });
   });

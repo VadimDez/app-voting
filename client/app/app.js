@@ -10,8 +10,8 @@ angular.module('appVotingApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  '720kb.socialshare'
-
+  '720kb.socialshare',
+  'chart.js'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

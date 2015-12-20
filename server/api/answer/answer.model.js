@@ -8,6 +8,7 @@ var AnswerSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  session: String,
   poll: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Poll'

@@ -14,6 +14,10 @@ class PollService {
     return this.$http.get('/api/polls');
   }
 
+  last(amount) {
+    return this.$http.get('/api/polls', {limit: amount});
+  }
+
   create(pollData) {
     return this.$http.post('/api/polls', pollData);
   }

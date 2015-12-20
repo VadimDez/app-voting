@@ -32,7 +32,7 @@ function responseWithResult(res, statusCode) {
   return function(entity) {
     if (entity) {
       //res.status(statusCode).json(entity);
-      Poll.populate(entity, [{path: 'user'}], function(err, _entity) {
+      Poll.populate(entity, {path: 'user', select: '_id name'}, function(err, _entity) {
         res.status(statusCode).json(_entity);
       });
     }
@@ -81,7 +81,10 @@ function removeEntity(res, user) {
 
 // Gets a list of Polls
 export function index(req, res) {
-  Poll.findAsync()
+  Poll.find()
+    .sort({created: -1})
+    .limit(parseInt(req.query.limit || 0))
+    .execAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
