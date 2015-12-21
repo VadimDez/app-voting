@@ -110,7 +110,13 @@ export function changePassword(req, res, next) {
  * Get my info
  */
 export function me(req, res, next) {
-  var userId = req.user._id;
+  var userId;
+
+  if (!req.user) {
+    return res.status(401).end();
+  }
+
+  userId = req.user._id;
 
   User.findOneAsync({ _id: userId }, '-salt -password')
     .then(user => { // don't ever give out the password or salt
