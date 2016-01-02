@@ -38,7 +38,7 @@ export function isAuthenticated() {
       if (!req.user) {
         return res.status(401).end();
       }
-      
+
       User.findByIdAsync(req.user._id)
         .then(user => {
           if (!user) {

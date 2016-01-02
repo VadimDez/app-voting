@@ -1,11 +1,13 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
-@import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
-$fa-font-path: "../bower_components/font-awesome/fonts";
-@import '../bower_components/font-awesome/scss/font-awesome';
+//$fa-font-path: "../bower_components/font-awesome/fonts";
+//@import '../bower_components/font-awesome/scss/font-awesome';
 
 /**
  * App-wide Styles
  */
+
+body {
+  background-color: #F5F5F9;
+}
 
 .browserupgrade {
   margin: 0.2em 0;
@@ -24,4 +26,5 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import 'profile/profile.scss';
 @import '../components/footer/footer.scss';
 @import '../components/modal/modal.scss';
+@import '../components/navbar/navbar.scss';
 // endinjector

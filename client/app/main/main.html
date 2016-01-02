@@ -1,21 +1,16 @@
-<navbar></navbar>
-
-<header class="hero-unit" id="banner">
-  <div class="container">
+<div layout="row" layout-wrap>
+  <div flex="10" hide-xs></div>
+  <div flex>
     <h2>Voting app</h2>
     <p class="lead">Create and participate to votings</p>
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Last Polls:</h1>
-      <ul class="nav nav-tabs nav-stacked col-sm-12" ng-repeat="poll in main.polls">
-        <li><a ui-sref="polls/poll({id: poll._id})">{{ poll.question }}</a></li>
-      </ul>
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Last Polls:</h1>
+        <ul class="nav nav-tabs nav-stacked col-sm-12" ng-repeat="poll in main.polls">
+          <li><a ui-sref="polls/poll({id: poll._id})">{{ poll.question }}</a></li>
+        </ul>
+      </div>
     </div>
   </div>
+  <div flex="10" hide-xs></div>
 </div>
-
-<footer></footer>

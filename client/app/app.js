@@ -8,10 +8,10 @@ angular.module('appVotingApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap',
   'validation.match',
   '720kb.socialshare',
-  'chart.js'
+  'chart.js',
+  'ngMaterial'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

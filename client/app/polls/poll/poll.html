@@ -1,30 +1,28 @@
-<navbar></navbar>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <a href="#" class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-text="Take part" socialshare-type="String('feed')" socialshare-caption="test">Facebook</a>
-        <a href="#" class="btn btn-default" socialshare socialshare-provider="twitter" socialshare-text="Take part" socialshare-hashtags="poll">Twitter</a>
-        <a href="#" class="btn btn-default" socialshare socialshare-provider="vk" socialshare-text="Take part">VK</a>
-      </div>
-    </div>
-
-    <h2>{{ pollCtrl.poll.question }}</h2>
-    <div ng-hide="pollCtrl.hasAnswered">
-      <div class="row">
-        <div class="col-md-12">
-          <button class="btn btn-default btn-block" ng-repeat="option in pollCtrl.poll.options track by $index" ng-click="pollCtrl.submitAnswer(option)">{{ option }}</button>
-        </div>
-      </div>
-
-      <div ng-show="pollCtrl.isLoggedIn()">
-        <label for="other">If you don't like options add new one</label>
-        <input type="text" name="other" class="form-control" ng-model="otherOption">
-        <button class="btn pull-right" ng-click="pollCtrl.addOtherOption(otherOption)">Add and vote</button>
-      </div>
-    </div>
-
-    <div ng-show="pollCtrl.hasAnswered">
-      <canvas id="bar" class="chart chart-doughnut" chart-data="pollCtrl.aggregationData" chart-labels="pollCtrl.aggregationLabels"></canvas>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <a href="#" class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-text="Take part" socialshare-type="String('feed')" socialshare-caption="test">Facebook</a>
+      <a href="#" class="btn btn-default" socialshare socialshare-provider="twitter" socialshare-text="Take part" socialshare-hashtags="poll">Twitter</a>
+      <a href="#" class="btn btn-default" socialshare socialshare-provider="vk" socialshare-text="Take part">VK</a>
     </div>
   </div>
-<footer></footer>
+
+  <h2>{{ pollCtrl.poll.question }}</h2>
+  <div ng-hide="pollCtrl.hasAnswered">
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-default btn-block" ng-repeat="option in pollCtrl.poll.options track by $index" ng-click="pollCtrl.submitAnswer(option)">{{ option }}</button>
+      </div>
+    </div>
+
+    <div ng-show="pollCtrl.isLoggedIn()">
+      <label for="other">If you don't like options add new one</label>
+      <input type="text" name="other" class="form-control" ng-model="otherOption">
+      <button class="btn pull-right" ng-click="pollCtrl.addOtherOption(otherOption)">Add and vote</button>
+    </div>
+  </div>
+
+  <div ng-show="pollCtrl.hasAnswered">
+    <canvas id="bar" class="chart chart-doughnut" chart-data="pollCtrl.aggregationData" chart-labels="pollCtrl.aggregationLabels"></canvas>
+  </div>
+</div>
