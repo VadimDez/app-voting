@@ -6,7 +6,6 @@
         <span flex></span>
         <md-button ui-sref="{{ item.state }}" aria-label="{{ item.title }}" ng-repeat="item in nav.menu">{{ item.title }}</md-button>
         <md-button ui-sref="polls/create" ng-show="nav.isLoggedIn()">Create poll</md-button>
-        <md-button ui-sref="admin" ng-show="nav.isAdmin()">Admin</md-button>
         <md-button ui-sref="signup" ng-hide="nav.isLoggedIn()">Sign up</md-button>
         <md-button ui-sref="login" ng-hide="nav.isLoggedIn()">Login</md-button>
         <md-button ui-sref="profile" ng-show="nav.isLoggedIn()">Hello {{ nav.getCurrentUser().name }}</md-button>
