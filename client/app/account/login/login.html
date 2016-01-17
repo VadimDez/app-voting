@@ -1,6 +1,6 @@
-<div layout="row" layout-wrap>
-  <div flex="30" hide-xs></div>
-  <div flex>
+<div layout="row" layout-wrap layout-padding>
+  <!--<div flex="30" hide-xs></div>-->
+  <div flex flex-gt-xs="40" flex-offset-gt-xs="30" class="md-whiteframe-5dp">
     <h1>Login</h1>
 
     <form name="form" ng-submit="vm.login(form)" novalidate>
@@ -16,11 +16,10 @@
       </md-input-container>
 
       <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-button class="md-raised md-primary" ng-disabled="!form.$valid">Login</md-button>
+        <md-button class="md-raised md-primary" ng-disabled="!form.$valid" type="submit">Login</md-button>
         <md-button ui-sref="signup" class="md-raised">Register</md-button>
       </section>
     </form>
 
   </div>
-  <div flex="30" hide-xs></div>
 </div>
