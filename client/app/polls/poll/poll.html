@@ -1,26 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <a href="#" class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-text="Take part" socialshare-type="String('feed')" socialshare-caption="test">Facebook</a>
-      <a href="#" class="btn btn-default" socialshare socialshare-provider="twitter" socialshare-text="Take part" socialshare-hashtags="poll">Twitter</a>
-      <a href="#" class="btn btn-default" socialshare socialshare-provider="vk" socialshare-text="Take part">VK</a>
-    </div>
-  </div>
+<div flex flex-gt-xs="80" flex-offset-gt-xs="10" layout-padding>
+  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+    <md-button class="md-primary" socialshare socialshare-provider="facebook" socialshare-text="Take part" socialshare-type="String('feed')" socialshare-caption="test">Facebook</md-button>
+    <md-button class="md-primary" socialshare socialshare-provider="twitter" socialshare-text="Take part" socialshare-hashtags="poll">Twitter</md-button>
+    <md-button class="md-primary" socialshare socialshare-provider="vk" socialshare-text="Take part">VK</md-button>
+  </section>
 
-  <h2>{{ pollCtrl.poll.question }}</h2>
-  <div ng-hide="pollCtrl.hasAnswered">
-    <div class="row">
-      <div class="col-md-12">
-        <button class="btn btn-default btn-block" ng-repeat="option in pollCtrl.poll.options track by $index" ng-click="pollCtrl.submitAnswer(option)">{{ option }}</button>
-      </div>
+  <h2 class="md-title">{{ pollCtrl.poll.question }}</h2>
+  <section ng-hide="pollCtrl.hasAnswered">
+    <div layout="column">
+      <md-button class="md-raised" ng-repeat="option in pollCtrl.poll.options track by $index" ng-click="pollCtrl.submitAnswer(option)">{{ option }}</md-button>
     </div>
 
-    <div ng-show="pollCtrl.isLoggedIn()">
-      <label for="other">If you don't like options add new one</label>
-      <input type="text" name="other" class="form-control" ng-model="otherOption">
-      <button class="btn pull-right" ng-click="pollCtrl.addOtherOption(otherOption)">Add and vote</button>
-    </div>
-  </div>
+    <section ng-show="pollCtrl.isLoggedIn()">
+
+      <md-input-container class="md-block">
+        <label for="other">If you don't like options add new one</label>
+        <input type="text" name="other" class="form-control" ng-model="otherOption">
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="pollCtrl.addOtherOption(otherOption)">Add and vote</md-button>
+    </section>
+  </section>
 
   <div ng-show="pollCtrl.hasAnswered">
     <canvas id="bar" class="chart chart-doughnut" chart-data="pollCtrl.aggregationData" chart-labels="pollCtrl.aggregationLabels"></canvas>
