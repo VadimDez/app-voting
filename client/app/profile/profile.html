@@ -1,16 +1,9 @@
-<div class="container">
-  <div>
-    <table class="table">
-      <tbody>
-      <tr ng-repeat="poll in profileCtrl.polls">
-        <td>
-          <a ui-sref="polls/poll({id: poll._id})">{{ poll.question }}</a>
-        </td>
-        <td class="text-right">
-          <button class="btn btn-danger" ng-click="profileCtrl.deletePoll(poll)">Delete</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+<div flex flex-gt-xs="80" flex-offset-gt-xs="10" layout-padding>
+  <md-list>
+    <md-subheader class="md-no-sticky">My votes</md-subheader>
+    <md-list-item class="secondary-button-padding" ui-sref="polls/poll({id: poll._id})" ng-repeat="poll in profileCtrl.polls">
+      <p>{{ poll.question }}</p>
+      <md-button class="md-secondary md-warn" ng-click="profileCtrl.deletePoll(poll)">Delete</md-button>
+    </md-list-item>
+  </md-list>
 </div>
