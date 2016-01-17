@@ -1,38 +1,38 @@
-<div layout="row" layout-wrap>
-  <div flex="30" hide-xs></div>
-  <div flex>
-    <h1>Sign up</h1>
 
-    <form name="form" ng-submit="vm.register(form)" novalidate>
+<div layout="row" layout-wrap layout-padding>
+  <div flex flex-gt-sm="40"  flex-offset-gt-xs="30" class="md-whiteframe-5dp">
+    <md-content class="layout-padding">
+      <h1>Sign up</h1>
 
-      <md-input-container class="md-block">
-        <label>Name</label>
-        <input type="text" name="name" class="form-control" ng-model="vm.user.name" required/>
-      </md-input-container>
+      <form name="form" ng-submit="vm.register(form)" novalidate>
 
-      <md-input-container class="md-block">
-        <label>Email</label>
-        <input type="email" name="email" ng-model="vm.user.email" required>
-      </md-input-container>
+        <md-input-container class="md-block">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" ng-model="vm.user.name" required/>
+        </md-input-container>
 
-      <md-input-container class="md-block">
-        <label>Password</label>
-        <input type="password" name="password" ng-model="vm.user.password" required>
-      </md-input-container>
+        <md-input-container class="md-block">
+          <label>Email</label>
+          <input type="email" name="email" ng-model="vm.user.email" required>
+        </md-input-container>
 
-      <md-input-container class="md-block">
-        <label>Confirm Password</label>
-        <input type="password" name="confirmPassword" ng-model="vm.user.confirmPassword"
-               match="vm.user.password"
-               ng-minlength="3" required/>
-      </md-input-container>
+        <md-input-container class="md-block">
+          <label>Password</label>
+          <input type="password" name="password" ng-model="vm.user.password" required>
+        </md-input-container>
 
-      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <md-button class="md-raised md-primary" ng-disabled="!form.$valid">Register</md-button>
-        <md-button ui-sref="login" class="md-raised">Login</md-button>
-      </section>
-    </form>
+        <md-input-container class="md-block">
+          <label>Confirm Password</label>
+          <input type="password" name="confirmPassword" ng-model="vm.user.confirmPassword"
+                 match="vm.user.password"
+                 ng-minlength="3" required/>
+        </md-input-container>
 
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+          <md-button class="md-raised md-primary" ng-disabled="!form.$valid" type="submit">Register</md-button>
+          <md-button ui-sref="login" class="md-raised">Login</md-button>
+        </section>
+      </form>
+    </md-content>
   </div>
-  <div flex="30" hide-xs></div>
 </div>
