@@ -1,21 +1,21 @@
-<div class="container">
-  <h2>New poll</h2>
+<div flex flex-gt-xs="80" flex-offset-gt-xs="10" layout-padding>
+  <h2 class="md-title">New poll</h2>
   <form name="pollForm" novalidate ng-submit="pollForm.$valid && pollCreateCtrl.create()">
-    <div>
+    <md-input-container class="md-block">
       <label for="question">Question</label>
-      <input type="text" name="question" class="form-control" placeholder="Question" ng-model="pollCreateCtrl.poll.question" required>
-    </div>
+      <input type="text" name="question" class="form-control" ng-model="pollCreateCtrl.poll.question" required>
+    </md-input-container>
 
     <p>Options</p>
 
-    <div ng-repeat="(key, value) in pollCreateCtrl.optionCount track by $index">
-      <label for=""></label>
-      <input type="text" name="option" class="form-control" placeholder="Option" ng-model="pollCreateCtrl.poll.options[key]" required>
-    </div>
+    <md-input-container class="md-block" ng-repeat="(key, value) in pollCreateCtrl.optionCount track by $index">
+      <label for="">Option</label>
+      <input type="text" name="option" class="form-control" ng-model="pollCreateCtrl.poll.options[key]" required>
+    </md-input-container>
 
     <div class="text-right">
-      <button class="btn btn-info" ng-click="pollCreateCtrl.addOption()" type="button"><i class="glyphicon glyphicon-plus"></i> Add one more option</button>
-      <button class="btn btn-primary" type="submit" ng-disabled="!pollForm.$valid"><i class="glyphicon glyphicon-check"></i> Create</button>
+      <md-button class="md-raised" ng-click="pollCreateCtrl.addOption()" type="button"><i class="glyphicon glyphicon-plus"></i> Add one more option</md-button>
+      <md-button class="md-raised md-primary" type="submit" ng-disabled="!pollForm.$valid"><i class="glyphicon glyphicon-check"></i> Create</md-button>
     </div>
 
   </form>
