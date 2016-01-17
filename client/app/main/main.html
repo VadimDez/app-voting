@@ -1,16 +1,12 @@
-<div layout="row" layout-wrap>
-  <div flex="10" hide-xs></div>
-  <div flex>
-    <h2>Voting app</h2>
-    <p class="lead">Create and participate to votings</p>
-    <div class="row">
-      <div class="col-lg-12">
-        <h1 class="page-header">Last Polls:</h1>
-        <ul class="nav nav-tabs nav-stacked col-sm-12" ng-repeat="poll in main.polls">
-          <li><a ui-sref="polls/poll({id: poll._id})">{{ poll.question }}</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div flex="10" hide-xs></div>
+<div flex flex-gt-xs="80" flex-offset-gt-xs="10" layout-padding>
+  <h2 class="md-title">Voting app</h2>
+  <p class="lead">Create and participate to votings</p>
+
+  <md-list>
+    <md-subheader class="md-no-sticky">Last Polls:</md-subheader>
+    <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="poll in main.polls" ui-sref="polls/poll({id: poll._id})">
+      <!--<md-icon md-svg-icon="{{ icon}}"></md-icon>-->
+      <p> {{ poll.question }} </p>
+    </md-list-item>
+  </md-list>
 </div>
