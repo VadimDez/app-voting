@@ -5,7 +5,7 @@ Part of FCC
 [Demo](http://app-voting.herokuapp.com/)
 
 
-## Run
+### Run
 
 Install dependencies
 
@@ -24,3 +24,12 @@ then to run server locally
 ```
 grunt serve
 ```
+
+### Uses
+
+* Grunt
+* Node
+* Express
+* Mongodb
+* Angular
+* Angular Material
