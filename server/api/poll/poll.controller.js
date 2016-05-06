@@ -21,13 +21,6 @@ function handleError(res, statusCode) {
 }
 
 function responseWithResult(res, statusCode) {
-  //statusCode = statusCode || 200;
-  //return function(entity) {
-  //  if (entity) {
-  //    res.status(statusCode).json(entity);
-  //  }
-  //};
-
   statusCode = statusCode || 200;
   return function(entity) {
     if (entity) {
@@ -54,7 +47,6 @@ function saveUpdates(updates) {
     if (updates.options) {
       entity.options = updates.options;
     }
-    //var updated = _.merge(entity, {options: options});
     return entity.saveAsync()
       .spread(updated => {
         return updated;
@@ -83,15 +75,13 @@ function removeEntity(res, user) {
 export function index(req, res) {
   Poll.find()
     .sort({created: -1})
-    .limit(parseInt(req.query.limit || 0))
+    .limit(parseInt(req.query.limit || 100))
     .execAsync()
     .then(responseWithResult(res))
     .catch(handleError(res));
 }
 
 export function getMine(req, res) {
-
-
   Poll.findAsync({user: req.user._id})
     .then(responseWithResult(res))
     .catch(handleError(res));
@@ -113,15 +103,12 @@ export function create(req, res) {
   poll.user = req.user._id;
 
   poll.saveAsync()
-    //.then(responseWithResult(res, 201))
     .then((entity) => {
-      //return function(entity) {
-        if (entity) {
-          Poll.populate(entity, [{path: 'user', select: '_id, name'}], function(err, _poll) {
-            res.status(201).json(_poll);
-          });
-        }
-      //}
+      if (entity) {
+        Poll.populate(entity, [{path: 'user', select: '_id, name'}], function(err, _poll) {
+          res.status(201).json(_poll);
+        });
+      }
     })
     .catch(handleError(res));
 }
