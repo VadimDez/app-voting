@@ -4,9 +4,11 @@
   class ProfileCtrl {
     constructor(pollService) {
       this.pollService = pollService;
+      this.hasLoaded = false;
 
       this.pollService.getMine()
         .then(data => {
+          this.hasLoaded = true;
           this.polls = data.data;
         });
     }

@@ -1,18 +1,21 @@
-'use strict';
+(function () {
+  'use strict';
 
-class PollsCtrl {
+  class PollsCtrl {
 
-  constructor(pollService) {
-    this.polls = [];
-    this.pollService = pollService;
+    constructor(pollService) {
+      this.polls = [];
+      this.hasLoaded = false;
 
-    this.pollService.get().then(polls => {
-      console.log(polls.data);
-
-      this.polls = polls.data;
-    });
+      pollService.get().then(polls => {
+        this.hasLoaded = true;
+        this.polls = polls.data;
+      });
+    }
   }
-}
 
-angular.module('appVotingApp')
-  .controller('PollsCtrl', PollsCtrl);
+  PollsCtrl.$inject = ['pollService'];
+
+  angular.module('appVotingApp')
+    .controller('PollsCtrl', PollsCtrl);
+}());

@@ -1,5 +1,8 @@
 <div flex flex-gt-xs="80" flex-offset-gt-xs="10" layout-padding>
-  <md-list>
+  <div ng-hide="pollsCtrl.hasLoaded" layout="row" layout-sm="column" layout-align="space-around">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <md-list ng-show="pollsCtrl.hasLoaded">
     <md-subheader class="md-no-sticky">Polls</md-subheader>
     <md-list-item class="secondary-button-padding" ui-sref="polls/poll({id: poll._id})" ng-repeat="poll in pollsCtrl.polls">
       <p>{{ poll.question }}</p>
