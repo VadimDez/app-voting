@@ -2,20 +2,22 @@
 
 (function() {
 
-class MainController {
+  class MainController {
 
-  constructor($http, pollService) {
-    this.$http = $http;
+    constructor(pollService) {
+      this.hasLoaded = false;
 
-    pollService.last(10)
-      .then(data => {
-        this.polls = data.data;
-      });
+      pollService.last(10)
+        .then(data => {
+          this.hasLoaded = true;
+
+          this.polls = data.data;
+        });
+    }
   }
-}
+
+  MainController.$inject = ['pollService'];
 
   angular.module('appVotingApp')
     .controller('MainController', MainController);
-
-  MainController.$inject = ['$http', 'pollService'];
 })();
