@@ -8,6 +8,7 @@
       this.answerService = answerService;
       this.isLoggedIn = Auth.isLoggedIn;
       this.hasAnswered = false;
+      this.hasLoaded = false;
 
       // get poll info
       this.pollService.get($state.params.id)
@@ -18,6 +19,8 @@
       // check answer
       this.answerService.get(null, {poll: $state.params.id}).then((data) => {
         this.hasAnswered = (data.data.length > 0);
+        this.hasLoaded = true;
+
         if (this.hasAnswered) {
           this.getAggregations($state.params.id);
         }
@@ -66,8 +69,8 @@
     }
   }
 
+  PollCtrl.$inject = ['pollService', '$state', 'answerService', 'Auth'];
+
   angular.module('appVotingApp')
     .controller('PollCtrl', PollCtrl);
-
-  PollCtrl.$inject = ['pollService', '$state', 'answerService', 'Auth'];
 }());

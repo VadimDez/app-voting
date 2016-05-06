@@ -1,4 +1,7 @@
-<div flex flex-gt-xs="80" flex-offset-gt-xs="10" layout-padding>
+<div ng-show="!pollCtrl.hasLoaded" layout="row" layout-sm="column" layout-align="space-around">
+  <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+<div ng-show="pollCtrl.hasLoaded" flex flex-gt-xs="80" flex-offset-gt-xs="10" layout-padding>
   <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
     <md-button class="md-primary" socialshare socialshare-provider="facebook" socialshare-text="Take part" socialshare-type="String('feed')" socialshare-caption="test">Facebook</md-button>
     <md-button class="md-primary" socialshare socialshare-provider="twitter" socialshare-text="Take part" socialshare-hashtags="poll">Twitter</md-button>
