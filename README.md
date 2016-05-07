@@ -33,3 +33,8 @@ grunt serve
 * Mongodb
 * Angular
 * Angular Material
+* Charts.js
+* SCSS
+* Karma
+* Protractor
+* Yeoman
